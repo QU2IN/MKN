@@ -1,37 +1,30 @@
-## Welcome to GitHub Pages
+####Карочи брадяги тут будем делать нашего франкенштейн
 
-You can use the [editor on GitHub](https://github.com/QU2IN/MKN/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+######1. Как начать(надеюсь у тебя уже есть свежайший python и настроенный git на компе)? ..1.1. Качаем скелет проекта себе:
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+создаешь папку у себя на кампьютере, назови ее "projects"(можешь назвать как хочешь)
+далее открываешь в этой папке GitBash(shift+ПКМ -> в списке находишь "Git Bash Here")
+прописываешь в этой черной консоле: git clone https://github.com/motik-dev/MKN
+..1.2. Активируем виртуальное окружение:
 
-### Markdown
+После выполнения пункта 1.1 в твоей папке должена была появится еще папка с названием 'MKN', заходи в нее
+Теперь создаем виртуальное окружение python. Открываем КОНСОЛЬ, если ты виндузятник, то это CMD. И там пишем: "python -m venv venv"
+Должна была появится папка с именем "venv". В ней хранятся все наши пакеты. Если да, то активируем его. В консольке переходим в venv/Scripts и выполняем файлик activate.bat. Команда ".\activate.bat"
+В консольке должена появится приставка venv
+..1.3. Запускаем наш проект.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+Качаем зависимости: "pip install -r requirements/_base.txt"
+Далее можем запускать блог "python main.py"
+######2. Что делать?.
 
-```markdown
-Syntax highlighted code block
+Проект разбит на модули(приложения), каждый модуль отвечает за что-то одно, например "admin" - модуль, отвечающий за панель администратора.
 
-# Header 1
-## Header 2
-### Header 3
+Имя	Модуль	Описание
+Матвей	admin	Возможность создавать/добавлять/удалять записи с ДЗ
+Женя, Никита	main	Возможность просматривать и комментировать записи блога
+Стасян	auth	Авторизация
+######3. Как делать?
 
-- Bulleted
-- List
+Сначала прочитайте про Flask, как эта шняга работает и что с этим делать. Узнайте как работают Blueprints Думаю нам будет проще создать rest-api на фласк
 
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/QU2IN/MKN/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+Я пока создам модели(описания таблиц в БД) и проделаю общую архитектуру БД приложения.
