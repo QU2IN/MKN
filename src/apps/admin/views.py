@@ -1,12 +1,10 @@
 from flask import Blueprint, render_template, abort
 from jinja2 import TemplateNotFound
-from apps import admin_page
+from flask import Blueprint
+
+admin_page = Blueprint('admin_page', __name__, template_folder='templates')
 
 
-@admin_page.route('/', defaults={'page': 'index'})
-@admin_page.route('/<page>')
-def show(page):
-    try:
-        return render_template(f'{page}.html')
-    except TemplateNotFound:
-        abort(404)
+@admin_page.route('/')
+def home():
+    return '<h1>Hello Kek</h1>'
