@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 from config import DevConfig
 from flask_sqlalchemy import SQLAlchemy
 
@@ -13,10 +13,9 @@ app.register_blueprint(auth_app, url_prefix='/auth')
 app.register_blueprint(post_app, url_prefix='/blog')
 db = SQLAlchemy(app)
 
-
 @app.route('/')
 def home():
-    return '<h1>Hello World!</h1>'
+    return render_template('/blog.html')
 
 
 if __name__ == '__main__':
