@@ -1,8 +1,9 @@
 from src.main import db
+from flask_login import UserMixin
 from src.apps.auth import models
 
 
-class Post(db.Model):
+class Post(UserMixin, db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(250))
@@ -15,7 +16,7 @@ class Post(db.Model):
         return '<Post id: {}, title: {}>'.format(self.id, self.title)
 
 
-class Comment(db.Model):
+class Comment(UserMixin,db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(250), unique=True)

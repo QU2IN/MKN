@@ -13,4 +13,4 @@ class User(UserMixin, db.Model):
     post = db.Column(db.Integer, db.ForeignKey('post.id'))
 
     def __repr__(self):
-        return '<User %r>' % self.username
+        return '<User %r>' % self.id
