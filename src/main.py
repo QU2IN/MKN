@@ -20,7 +20,7 @@ db = SQLAlchemy(app)
 
 @app.route('/')
 def home():
-    return render_template('/blog.html')
+    return render_template('/mainlink.html')
 
 
 @app.route('/error')
@@ -28,36 +28,14 @@ def error():
     return '<h1>I am Error!</h1>'
 
 
-# @app.route('/login', methods=['GET', 'POST'])
-# def login():
-#     from src.apps.auth.models import User
-#     email = request.form.get('email')
-#     password = request.form.get('password')
-#     remember = True if request.form.get('remember') else False
-#
-#     return render_template('/login.html')
-@app.route('/login', methods=['POST'])
-def login_handler():
-    login = request.form.get('login')
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    from src.apps.auth.models import User
+    email = request.form.get('email')
     password = request.form.get('password')
+    remember = True if request.form.get('remember') else False
 
-    if not all([login, password]):
-        return '', 500
-
-    user_table_recs = DB.execute_select_query(
-        'SELECT name, login, password FROM User')
-
-    user_rec = next(filter(lambda x: x[1] == login, user_table_recs))
-
-    if not user_rec:
-        return '', 500
-
-    if user_rec[2] != password:
-        return '', 500
-
-    response = make_response(redirect('/'))
-    response.set_cookie('login', user_rec[1], samesite='Strict')
-    return response
+    return render_template('/login.html')
 
 
 @app.route('/signup', methods=['GET','POST'])
