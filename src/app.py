@@ -3,7 +3,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from config import DevConfig
 from config import DB
 from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate, MigrateCommand
+from flask_migrate import Migrate
 from apps.admin.views import admin_app
 from apps.auth.views import auth_app
 from apps.blog.views import post_app
