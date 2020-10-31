@@ -1,4 +1,4 @@
-from flask_login import UserMixin
+# from flask_login import UserMixin
 from src.main import db
 from src.apps.blog import models
 
