@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Admin
+{% endblock %}
+
+{% block content_title %}
+    <div class="container">
+      <h1>Please signup</h1>
+      <br>
+      <form action="" method="post">
+        <input type="text" placeholder="Username" name="username" value="{{
+          request.form.username }}">
+          <input type="text" placeholder="E-mail" name="email" value="{{
+          request.form.email }}">
+          <input type="password" placeholder="Password" name="password" value="{{
+          request.form.password }}">
+        <input class="btn btn-default" type="submit" value="Signup">
+      </form>
+      {% if error %}
+        <p class="error"><strong>Error:</strong> {{ error }}
+      {% endif %}
+    </div>
+{% endblock %}
+
+{% block content %}
+
+{% endblock %}

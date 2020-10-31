@@ -18,7 +18,7 @@
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #8B0000;">
-    <a class="navbar-brand" href="{{ url_for('home') }}">МНКБлог</a>
+    <a class="navbar-brand" href="{{ url_for('home') }}">МКН 2.0</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -30,7 +30,7 @@
                     <a class="nav-link" href="{{ url_for('posts.home') }}">Блог <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+                    <a class="nav-link" href="{{ url_for('posts.home') }}">Модератор</a>
                 </li>
                  <li class="nav-item">
                     <a class="nav-link" href="/admin">Админка</a>
@@ -43,23 +43,15 @@
         </div>
     </nav>
 
-    <div class="container">
+{% block content_title %}
 
-        <div class="row">
-            <h1>
-                {% block content_title %}
+{% endblock %}
 
-                {% endblock %}
-            </h1>
-        </div>
 
-            <h2>
-            {% block content %}
+{% block content %}
 
-            {% endblock %}
-            </h2>
+{% endblock %}
 
-    </div>
 
 </body>
 </html>

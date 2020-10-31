@@ -1,20 +1,28 @@
 from src.main import db
+from flask_login import UserMixin
+from src.apps.auth import models
 
 
-class Post(db.Model):
-    """An blog posts model
+class Post(UserMixin, db.Model):
 
-    :param str Title: post title
-    :param str Content: post body
-    :param User Author: post author
-    :param created_at: creation data
-    """
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(250))
+    slug = db.Column(db.String(140), unique=True)
+    body = db.Column(db.Text)
+    user = db.relationship('User', backref='post')
+    comments = db.Column(db.Integer, db.ForeignKey('comments.id'))
+
+    def __repr__(self):
+        return '<Post id: {}, title: {}>'.format(self.id, self.title)
 
 
-class Comment(db.Model):
-    """An blog posts model
-    :param str Content: post body
-    :param User Author: post author
-    :param created_at: creation data
-    """
+class Comment(UserMixin,db.Model):
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(250), unique=True)
+    body = db.Column(db.Text)
+    posts = db.relationship('Post', backref='comment')
+
+    def __repr__(self):
+        return '<{}, 4elik : {}>'.format(self.id, self.name)
 

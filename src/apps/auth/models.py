@@ -1,32 +1,16 @@
+from flask_login import UserMixin
 from src.main import db
+from src.apps.blog import models
 
 
-class User(db.Model):
-    """An admin user capable of viewing reports.
+class User(UserMixin, db.Model):
 
-    :param str email: email address of user
-    :param str password: encrypted password for the user
-
-    """
-    __tablename__ = 'user'
-
-    email = db.Column(db.String, primary_key=True)
-    password = db.Column(db.String)
-    authenticated = db.Column(db.Boolean, default=False)
+    # __tablename__ = 'User'
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(100), unique=True, nullable=False)
+    password = db.Column(db.String(100), nullable=False)
     is_admin = db.Column(db.Boolean, default=False)
+    post = db.Column(db.Integer, db.ForeignKey('post.id'))
 
-    def is_active(self):
-        """True, as all users are active."""
-        return True
-
-    def get_id(self):
-        """Return the email address to satisfy Flask-Login's requirements."""
-        return self.email
-
-    def is_authenticated(self):
-        """Return True if the user is authenticated."""
-        return self.authenticated
-
-    def is_anonymous(self):
-        """False, as anonymous users aren't supported."""
-        return False
+    def __repr__(self):
+        return '<User %r>' % self.id
